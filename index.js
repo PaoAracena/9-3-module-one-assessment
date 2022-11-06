@@ -127,13 +127,17 @@ function countByRating(movies) {
  */
 function findById(movies,id) {
   newObj = {}
+  if (!movies.length) {
+    return null
+  } 
+
   for(let i = 0; i < movies.length; i++) {
-    if ( movies[i].imdbID != movies.imdbID || !movies) {
-      return null
-    } 
+     if (movies[i].imdbID ===id) {
+      return movies[i]
   }
 }
-
+return null 
+}
 /**
  * filterByGenre()
  * -----------------------------
@@ -212,15 +216,19 @@ function getAllMoviesReleasedAtOrBeforeYear(movies,year) {
  *  //> "Incredibles 2"
  */
 function getBiggestBoxOfficeMovie(movies) {
-  // let highestBoxOffice = 0
-  // let mostExpensiveMovie = ""
-  // if (!movies.length) {
-  //   return null
-  // }
-  // for(let i=0; i < movies.length; i++) {
-  //   let num = Number(movies[i].boxOffice.deleteCharAt(0).split(",").join(""))
-  //   if (num > highestBoxOffice)
-  // }
+  let highestBoxOffice = 0
+  let mostExpensiveMovie = ""
+  if (!movies.length) {
+    return null
+  }
+  for(let i=0; i < movies.length; i++) {
+    let num = Number(movies[i].boxOffice.deleteCharAt(0).split(",").join(""))
+    if (num > highestBoxOffice)  {
+      highestBoxOffice = num
+      mostExpensiveMovie = highestBoxOffice
+    }
+      highestBoxOffice
+  }
 }
 
 // Do not change anything below this line.
