@@ -50,15 +50,19 @@ function getAllMovieTitles(movies) {
  *  //> 96
  */
 function getHighestMetascore(movies) {
-  meta = 0 
-  for (let i = 0; i < movies.length; i++) {
-       if (!movies[i].metascore) {
-        return meta
-       } else if (Number(movies[i].metascore > number )){
-          meta = (Number(movies[i].metascore))
-       }
-       }
-  return meta
+ highestScore = 0
+
+ if (!movies.length){
+  return highestScore
+ }
+ for (let i = 0; i < movies.length; i++) {
+  highestScore = (Number(movies[0].metascore)) 
+   if (Number(movies[i].metascore) > highestScore) {
+     highestScore = (Number(movies[i].metascore))
+   }
+   return highestScore
+ }
+
 }
 // if (Number(movies[i].metaScore >= number)) {
 //   meta = (Number(movies[i].metaScore))
@@ -96,15 +100,15 @@ function getAverageIMDBRating(movies) {
  *  //> { G: 3, PG: 7 }
  */
 function countByRating(movies) {
-  // newObj = {}
-  // for ( let i = 0; i < movies.length; i++) {
-  //   let num = movies[i].rated
-  //    if (!newObj[num]) {
-  //     return newObj
-  //    }
-  //    newObj[num] = 
-  
-  // return newObj
+  newObj = {}
+  for ( let i = 0; i < movies.length; i++) {
+    let num = movies[i].rated
+     if (!newObj[num]) {
+      return newObj
+     }
+     newObj[num] = 1
+    }
+  return newObj
 }
 
 /**
@@ -186,7 +190,15 @@ function filterByGenre(movies, genre) {
       }
     ];
  */
-function getAllMoviesReleasedAtOrBeforeYear() {}
+function getAllMoviesReleasedAtOrBeforeYear(movies,year) {
+ emptyArray = []
+ for (let i = 0; i < movies.length; i++) {
+  if (Number(movies[i].releasedOnDVD.slice(-4)) <= year) {
+     emptyArray.push(movies[i])
+  }
+ }
+ return emptyArray
+}
 
 /**
  * getBiggestBoxOfficeMovie()
@@ -199,7 +211,17 @@ function getAllMoviesReleasedAtOrBeforeYear() {}
  *  getBiggestBoxOfficeMovie(movies);
  *  //> "Incredibles 2"
  */
-function getBiggestBoxOfficeMovie() {}
+function getBiggestBoxOfficeMovie(movies) {
+  // let highestBoxOffice = 0
+  // let mostExpensiveMovie = ""
+  // if (!movies.length) {
+  //   return null
+  // }
+  // for(let i=0; i < movies.length; i++) {
+  //   let num = Number(movies[i].boxOffice.deleteCharAt(0).split(",").join(""))
+  //   if (num > highestBoxOffice)
+  // }
+}
 
 // Do not change anything below this line.
 module.exports = {
