@@ -197,7 +197,7 @@ function filterByGenre(movies, genre) {
 function getAllMoviesReleasedAtOrBeforeYear(movies,year) {
  emptyArray = []
  for (let i = 0; i < movies.length; i++) {
-  if (Number(movies[i].releasedOnDVD.slice(-4)) <= year) {
+  if (Number(movies[i].released.slice(-4)) <= year) {
      emptyArray.push(movies[i])
   }
  }
